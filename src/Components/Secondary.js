@@ -19,18 +19,14 @@ function Secondary(props) {
 				<label class='label'>
 					What type of content will your site display?
 				</label>
-				<div class='select'>
-					<select>
-						<option>UTF-8</option>
-					</select>
+				<div class='control'>
+					<input class='input' type='text' placeholder='UTF-8' />
 				</div>
 			</div>
 			<div class='control'>
 				<label class='label'>What is your site primary language?</label>
-				<div class='select'>
-					<select>
-						<option>English</option>
-					</select>
+				<div class='control'>
+					<input class='input' type='text' placeholder='English' />
 				</div>
 			</div>
 		</>

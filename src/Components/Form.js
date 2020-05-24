@@ -81,7 +81,7 @@ class Form extends Component {
 
 	render() {
 		return (
-			<div className='container'>
+			<div className='container box'>
 				<div className='block'>
 					<h3 className='is-size-4 has-text-weight-bold'>
 						Step {this.state.currentStep}
