@@ -6,19 +6,22 @@ function Optional(props) {
 	}
 	return (
 		<>
-			<div class='field'>
-				<label class='label'>
+			<div className='field'>
+				<label className='label'>
 					Search engines should revisit this page after
 				</label>
-				<div class='control'>
-					<input class='input' type='text' placeholder='e.g 5 days' />
+				<div className='control'>
+					<input className='input' type='text' placeholder='e.g 5 days' />
 				</div>
 			</div>
-			<div class='field'>
-				<label class='label'>Author</label>
-				<div class='control'>
-					<input class='input' type='text' placeholder='e.g Alex Smith' />
+			<div className='field'>
+				<label className='label'>Author</label>
+				<div className='control'>
+					<input className='input' type='text' placeholder='e.g Alex Smith' />
 				</div>
+			</div>
+			<div className='button is-success' type='submit'>
+				Generate Meta Tags
 			</div>
 		</>
 	);

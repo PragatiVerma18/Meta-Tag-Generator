@@ -54,9 +54,6 @@ function Basic(props) {
 					/>
 				</div>
 			</div>
-			{/* <div className='control'>
-				<button className='button is-primary'>Next</button>
-			</div> */}
 		</>
 	);
 }
