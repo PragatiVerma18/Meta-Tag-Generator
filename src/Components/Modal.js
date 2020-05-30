@@ -64,14 +64,14 @@ function Modal({
             className="textarea"
             ref={textarea => (this.textArea = textarea)}
             value={`${meta}`}
-            onClick={() => this.copyCodeToClipboard}
+            onClick={this.copyCodeToClipboard}
           >
             {meta}
           </textarea>
         </div>
         <button
           className="button is-warning has-text-weight-bold copy"
-          onClick={() => this.copyCodeToClipboard}
+          onClick={this.copyCodeToClipboard}
         >
           Copy To Clipboard
         </button>
