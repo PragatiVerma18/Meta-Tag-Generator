@@ -9,110 +9,77 @@ class Form extends Component {
     super(props);
 
     this.state = {
-      currentStep: 1,
-      title: "",
-      description: "",
-      keywords: "",
-      allowRobots: "",
-      contenType: "",
-      lang: "",
-      seo: "",
-      author: ""
+      currentStep: 1
     };
   }
-
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    alert("Your registration detail");
-  };
-
-  _next = () => {
-    let currentStep = this.state.currentStep;
-    currentStep = currentStep >= 2 ? 3 : currentStep + 1;
-    this.setState({
-      currentStep: currentStep
-    });
-  };
-
-  _prev = () => {
-    let currentStep = this.state.currentStep;
-    currentStep = currentStep === 1 ? 1 : currentStep - 1;
-    this.setState({
-      currentStep: currentStep
-    });
-  };
-
-  previousButton() {
-    let currentStep = this.state.currentStep;
-    if (currentStep !== 1) {
-      return (
-        <button
-          className="button is-warning"
-          type="button"
-          onClick={this._prev}
-        >
-          Previous
-        </button>
-      );
-    }
-    return null;
-  }
-
-  nextButton() {
-    let currentStep = this.state.currentStep;
-    if (currentStep < 3) {
-      return (
-        <button
-          className="button is-primary"
-          type="button"
-          onClick={this._next}
-        >
-          Next
-        </button>
-      );
-    }
-    return null;
-  }
-
-  render() {
+  render(props) {
+    const {
+      title,
+      description,
+      keywords,
+      allowRobots,
+      contentType,
+      lang,
+      seo,
+      author
+    } = this.props;
     const { currentStep } = this.state;
     return (
       <div className="container box">
         <div className="block">
-          <h3 className="is-size-4 has-text-weight-bold">
-            Step {this.state.currentStep}
-          </h3>
-          <form onSubmit={this.handleSubmit}>
+          <h3 className="is-size-4 has-text-weight-bold">Step {currentStep}</h3>
+          <form onSubmit={this.props.handleSubmit}>
             <Basic
-              currentStep={this.state.currentStep}
-              handleChange={this.handleChange}
-              title={this.state.title}
-              description={this.state.description}
-              keywords={this.state.keywords}
+              currentStep={currentStep}
+              handleChange={this.props.handleChange}
+              title={title}
+              description={description}
+              keywords={keywords}
             />
             <Secondary
-              currentStep={this.state.currentStep}
-              handleChange={this.handleChange}
-              allowRobots={this.state.allowRobots}
-              contenType={this.state.contenType}
-              lang={this.state.lang}
+              currentStep={currentStep}
+              handleChange={this.props.handleChange}
+              allowRobots={allowRobots}
+              contenType={contentType}
+              lang={lang}
             />
             <Optional
-              currentStep={this.state.currentStep}
-              handleChange={this.handleChange}
-              seo={this.state.seo}
-              author={this.state.author}
-              handleSubmit={this.state.handleSubmit}
+              currentStep={currentStep}
+              handleChange={this.props.handleChange}
+              seo={seo}
+              author={author}
+              handleSubmit={this.props.handleSubmit}
             />
-            {this.previousButton()}
-            {this.nextButton()}
+
+            {currentStep !== 1 && (
+              <button
+                className="button is-warning"
+                type="button"
+                onClick={() => {
+                  const current = currentStep === 1 ? 1 : currentStep - 1;
+                  this.setState({
+                    currentStep: current
+                  });
+                }}
+              >
+                Previous
+              </button>
+            )}
+
+            {currentStep < 3 && (
+              <button
+                className="button is-primary"
+                type="button"
+                onClick={() => {
+                  const current = currentStep >= 2 ? 3 : currentStep + 1;
+                  this.setState({
+                    currentStep: current
+                  });
+                }}
+              >
+                Next
+              </button>
+            )}
             {currentStep === 3 && (
               <button className="button is-success" type="submit">
                 Generate Meta Tags
