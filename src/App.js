@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      show: false,
+      show: true,
       title: "",
       description: "",
       keywords: "",
@@ -45,26 +45,50 @@ class App extends Component {
     this.setState({ show: false });
   };
   render() {
+    const {
+      show,
+      currentStep,
+      title,
+      description,
+      keywords,
+      allowRobots,
+      contentType,
+      lang,
+      seo,
+      author
+    } = this.state;
     return (
       <div className="App">
         <Header />
         <Form
-          show={this.state.show}
-          currentStep={this.state.currentStep}
-          title={this.state.title}
-          description={this.state.description}
-          keywords={this.state.keywords}
-          allowRobots={this.state.allowRobots}
-          contentType={this.state.contentType}
-          lang={this.state.lang}
-          seo={this.state.seo}
-          author={this.state.author}
+          show={show}
+          currentStep={currentStep}
+          title={title}
+          description={description}
+          keywords={keywords}
+          allowRobots={allowRobots}
+          contentType={contentType}
+          lang={lang}
+          seo={seo}
+          author={author}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           previousButton={this.previousButton}
           nextButton={this.nextButton}
         />
-        {this.state.show && <Modal handleClose={this.hideModal} />}
+        {this.state.show && (
+          <Modal
+            handleClose={this.hideModal}
+            title={title}
+            description={description}
+            keywords={keywords}
+            allowRobots={allowRobots}
+            contentType={contentType}
+            lang={lang}
+            seo={seo}
+            author={author}
+          />
+        )}
       </div>
     );
   }
