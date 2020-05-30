@@ -71,7 +71,7 @@ function Modal({
         </div>
         <button
           className="button is-warning has-text-weight-bold copy"
-          onClick={() => this.copyCodeToClipboard()}
+          onClick={() => this.copyCodeToClipboard}
         >
           Copy To Clipboard
         </button>
