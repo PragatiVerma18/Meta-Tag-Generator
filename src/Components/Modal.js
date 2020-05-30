@@ -1,20 +1,38 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
-function Modal({
-  handleClose,
-  title,
-  description,
-  keywords,
-  allowRobots,
-  contentType,
-  lang,
-  seo,
-  author,
-  image,
-  url
-}) {
-  const meta = `
+class Modal extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			copy: false,
+		};
+	}
+
+	copyCodeToClipboard = () => {
+		const el = this.textArea;
+		el.select();
+		document.execCommand('copy');
+		this.setState({
+			copy: true,
+		});
+	};
+
+	render() {
+		const {
+			handleClose,
+			title,
+			description,
+			keywords,
+			contentType,
+			lang,
+			seo,
+			author,
+			image,
+			url,
+		} = this.props;
+		const meta = `
   <!-- Primary Meta Tags -->
   <title>${title}</title>
   <meta name="title" content="${title}">
@@ -41,44 +59,42 @@ function Modal({
   <meta name="language" content="${lang}">
   <meta name="revisit-after" content="${seo} days">
   <meta name="author" content="${author}">`;
-
-  copyCodeToClipboard = () => {
-    const el = this.textArea;
-    el.select();
-    document.execCommand("copy");
-  };
-
-  return ReactDOM.createPortal(
-    <div className="container meta">
-      <article className="message is-primary">
-        <div className="message-header">
-          <p>Meta Tags</p>
-          <button
-            className="delete"
-            aria-label="delete"
-            onClick={handleClose}
-          />
-        </div>
-        <div className="message-body is-primary">
-          <textarea
-            className="textarea"
-            ref={textarea => (this.textArea = textarea)}
-            value={`${meta}`}
-            onClick={this.copyCodeToClipboard}
-          >
-            {meta}
-          </textarea>
-        </div>
-        <button
-          className="button is-warning has-text-weight-bold copy"
-          onClick={this.copyCodeToClipboard}
-        >
-          Copy To Clipboard
-        </button>
-      </article>
-    </div>,
-    document.getElementById("portal")
-  );
+		return ReactDOM.createPortal(
+			<div className='container meta'>
+				<article className='message is-primary'>
+					<div className='message-header'>
+						<p>Meta Tags</p>
+						<button
+							className='delete'
+							aria-label='delete'
+							onClick={handleClose}
+						/>
+					</div>
+					<div className='message-body is-primary'>
+						<textarea
+							className='textarea'
+							ref={(textarea) => (this.textArea = textarea)}
+							value={`${meta}`}
+							onClick={this.copyCodeToClipboard}>
+							{meta}
+						</textarea>
+					</div>
+					{this.state.copy ? (
+						<button className='button is-success has-text-weight-bold copy'>
+							Copied!!!
+						</button>
+					) : (
+						<button
+							className='button is-warning has-text-weight-bold copy'
+							onClick={this.copyCodeToClipboard}>
+							Copy To Clipboard
+						</button>
+					)}
+				</article>
+			</div>,
+			document.getElementById('portal')
+		);
+	}
 }
 
 export default Modal;
