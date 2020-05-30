@@ -64,7 +64,7 @@ function Modal({
             className="textarea"
             ref={textarea => (this.textArea = textarea)}
             value={`${meta}`}
-            onClick={() => this.copyCodeToClipboard()}
+            onClick={() => this.copyCodeToClipboard}
           >
             {meta}
           </textarea>
