@@ -42,6 +42,12 @@ function Modal({
   <meta name="revisit-after" content="${seo} days">
   <meta name="author" content="${author}">`;
 
+  copyCodeToClipboard = () => {
+    const el = this.textArea;
+    el.select();
+    document.execCommand("copy");
+  };
+
   return ReactDOM.createPortal(
     <div className="container meta">
       <article className="message is-primary">
@@ -54,8 +60,21 @@ function Modal({
           />
         </div>
         <div className="message-body is-primary">
-          <pre>{meta}</pre>
+          <textarea
+            className="textarea"
+            ref={textarea => (this.textArea = textarea)}
+            value={`${meta}`}
+            onClick={() => this.copyCodeToClipboard()}
+          >
+            {meta}
+          </textarea>
         </div>
+        <button
+          className="button is-warning has-text-weight-bold copy"
+          onClick={() => this.copyCodeToClipboard()}
+        >
+          Copy To Clipboard
+        </button>
       </article>
     </div>,
     document.getElementById("portal")

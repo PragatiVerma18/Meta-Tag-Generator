@@ -16,9 +16,12 @@ code {
   width: 70vw;
   padding: 1em;
   margin-bottom: 50px;
+  font-weight: 500 !important;
 }
 
-pre {
-  color: #17202a;
-  font-weight: 500 !important;
+.message-body textarea {
+  height: 80vh;
+}
+.copy {
+  margin: auto !important;
 }
