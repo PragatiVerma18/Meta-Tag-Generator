@@ -21,7 +21,9 @@ class Form extends Component {
       contentType,
       lang,
       seo,
-      author
+      author,
+      image,
+      url
     } = this.props;
     const { currentStep } = this.state;
     return (
@@ -35,6 +37,8 @@ class Form extends Component {
               title={title}
               description={description}
               keywords={keywords}
+              image={image}
+              url={url}
             />
             <Secondary
               currentStep={currentStep}

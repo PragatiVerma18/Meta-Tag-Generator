@@ -38,6 +38,37 @@ function Basic(props) {
       </div>
       <div className="field">
         <div className="control">
+          <label htmlFor="Image" className="label">
+            Site Main Image Url
+          </label>
+          <input
+            className="input"
+            name="image"
+            type="text"
+            placeholder="Paste the main image URL"
+            value={props.image}
+            onChange={props.handleChange}
+          />
+        </div>
+      </div>
+      <div className="field">
+        <div className="control">
+          <label htmlFor="URL" className="label">
+            Site Url
+          </label>
+          <input
+            className="input"
+            name="url"
+            type="text"
+            placeholder="Paste the website URL"
+            value={props.url}
+            onChange={props.handleChange}
+          />
+        </div>
+      </div>
+
+      <div className="field">
+        <div className="control">
           <label htmlFor="keywords" className="label">
             Site Keywords (Separated with commas)
           </label>

@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      show: true,
+      show: false,
       title: "",
       description: "",
       keywords: "",
@@ -19,7 +19,9 @@ class App extends Component {
       contentType: "",
       lang: "",
       seo: "",
-      author: ""
+      author: "",
+      image: "",
+      url: ""
     };
   }
 
@@ -55,7 +57,9 @@ class App extends Component {
       contentType,
       lang,
       seo,
-      author
+      author,
+      image,
+      url
     } = this.state;
     return (
       <div className="App">
@@ -71,6 +75,8 @@ class App extends Component {
           lang={lang}
           seo={seo}
           author={author}
+          image={image}
+          url={url}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           previousButton={this.previousButton}
@@ -87,6 +93,8 @@ class App extends Component {
             lang={lang}
             seo={seo}
             author={author}
+            image={image}
+            url={url}
           />
         )}
       </div>
