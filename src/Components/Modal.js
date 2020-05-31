@@ -63,9 +63,9 @@ class Modal extends Component {
 			<div className='container meta'>
 				<article className='message is-primary'>
 					<div className='message-header'>
-						<p>Meta Tags</p>
+						<p className='is-size-4'>Meta Tags</p>
 						<button
-							className='delete'
+							className='delete is-large'
 							aria-label='delete'
 							onClick={handleClose}
 						/>
